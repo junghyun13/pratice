@@ -1,0 +1,18 @@
+# pratice 신고받기
+# python
+def solution(id_list, report, k):
+    answer = [0] * len(id_list)    
+    reports = {x : 0 for x in id_list}
+
+    for c in set(report):
+        reports[c.split()[1]] += 1
+
+    for c in set(report):
+        if reports[c.split()[1]] >= k:
+            answer[id_list.index(c.split()[0])] += 1
+
+    return answer
+id_list=["muzi","frodo","apeach","neo"]
+report=["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
+print(solution(id_list,report,2))
+# result--> [2,1,1,0]
